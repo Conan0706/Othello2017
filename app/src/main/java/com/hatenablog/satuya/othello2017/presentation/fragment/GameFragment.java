@@ -256,41 +256,6 @@ public class GameFragment extends Fragment implements GameView {
         void onFragmentInteraction( Uri uri );
     }
 
-    private void setButtonColor( final Disc disc ) {
-
-        handler.post( new Runnable() {
-            @Override
-            public void run() {
-                int i = disc.x - 1;
-                int j = disc.y - 1;
-
-                if ( disc.color == BLACK ) {
-                    buttons[i][j].setImageResource( R.drawable.black_stone );
-                } else if ( disc.color == WHITE ) {
-                    buttons[i][j].setImageResource( R.drawable.white_stone );
-                } else if ( disc.color == EMPTY ) {
-                    buttons[i][j].setImageResource( R.drawable.empty );
-                }
-            }
-        } );
-
-//        int i = disc.x - 1;
-//        int j = disc.y - 1;
-//
-//        if ( disc.color == BLACK ) {
-//            buttons[i][j].setImageResource( R.drawable.black_stone );
-//        } else if ( disc.color == WHITE ) {
-//            buttons[i][j].setImageResource( R.drawable.white_stone );
-//        }
-//
-//        if ( disc.color == EMPTY ) {
-//            buttons[i][j].setVisibility( View.INVISIBLE );
-//            buttons[i][j].setImageResource( R.drawable.empty );
-//        } else {
-//            buttons[i][j].setVisibility( View.VISIBLE );
-//        }
-    }
-
     synchronized private void animateButtonColor( final Disc putDisc ) {
 
         hasAnimated = false;
@@ -348,7 +313,7 @@ public class GameFragment extends Fragment implements GameView {
                         }
                     } );
                     buttons[i][j].startAnimation( scaleDownAnimation );
-                    Log.d( "discAnim", "scaleStart\nx:" + i + "y:" + j);
+                    Log.d( "discAnim", "scaleStart\nx:" + i + "y:" + j );
                 }
             } );
         } else if ( beforeDisc.color == EMPTY ) {
@@ -365,7 +330,6 @@ public class GameFragment extends Fragment implements GameView {
                         @Override
                         public void onAnimationEnd( Animation animation ) {
                             buttons[i][j].clearAnimation();
-//                            appearanceAnimation.
                         }
 
                         @Override
@@ -383,75 +347,10 @@ public class GameFragment extends Fragment implements GameView {
                     }
 
                     buttons[i][j].startAnimation( appearanceAnimation );
-                    Log.d( "discAnim", "appearanceStart\nx:" + i + "y:" + j);
+                    Log.d( "discAnim", "appearanceStart\nx:" + i + "y:" + j );
                 }
             } );
         }
-
-//        handler.post( new Runnable() {
-//            @Override
-//            public void run() {
-//                final int i = putDisc.x - 1;
-//                final int j = putDisc.y - 1;
-
-//                final Disc beforeDisc = (Disc) buttons[i][j].getTag();
-
-//                if ( beforeDisc.color == BLACK || beforeDisc.color == WHITE ) {
-//                    scaleDownAnimation.setAnimationListener( new Animation.AnimationListener() {
-//                        @Override
-//                        public void onAnimationStart( Animation animation ) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onAnimationEnd( Animation animation ) {
-//                            if ( beforeDisc.color == BLACK ) {
-//                                buttons[i][j].setImageResource( R.drawable.white_stone );
-//                            } else {
-//                                buttons[i][j].setImageResource( R.drawable.black_stone );
-//                            }
-//                            buttons[i][j].startAnimation( scaleUpAnimation );
-//                        }
-//
-//                        @Override
-//                        public void onAnimationRepeat( Animation animation ) {
-//
-//                        }
-//                    } );
-//                    buttons[i][j].startAnimation( scaleDownAnimation );
-//                    Log.d( "discAnim", "scaleStart\nx:" + i + "y:" + j);
-//                } else if ( beforeDisc.color == EMPTY ) {
-//
-//                    appearanceAnimation.setAnimationListener( new Animation.AnimationListener() {
-//                        @Override
-//                        public void onAnimationStart( Animation animation ) {
-//                            buttons[i][j].setVisibility( View.VISIBLE );
-//                        }
-//
-//                        @Override
-//                        public void onAnimationEnd( Animation animation ) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onAnimationRepeat( Animation animation ) {
-//
-//                        }
-//                    } );
-//
-//                    if ( putDisc.color == BLACK ) {
-//                        buttons[i][j].setVisibility( View.INVISIBLE );
-//                        buttons[i][j].setImageResource( R.drawable.black_stone );
-//                    } else if ( putDisc.color == WHITE ) {
-//                        buttons[i][j].setVisibility( View.INVISIBLE );
-//                        buttons[i][j].setImageResource( R.drawable.white_stone );
-//                    }
-//
-//                    buttons[i][j].startAnimation( appearanceAnimation );
-//                    Log.d( "discAnim", "appearanceStart\nx:" + i + "y:" + j);
-//                }
-//            }
-//        } );
     }
 
     private int convertDpToPx( float dp ) {

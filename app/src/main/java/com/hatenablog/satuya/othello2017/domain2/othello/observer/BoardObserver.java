@@ -12,8 +12,11 @@ import com.hatenablog.satuya.othello2017.domain2.othello.event.TryWrongPosPutEve
 public interface BoardObserver {
 
     void onPut( PutEvent event );
+
     void onPassed( PassEvent event );
+
     void onFinished( FinishEvent event );
+
     void onTryWrongPosPut( TryWrongPosPutEvent event );
     //TODO void onUndo( UndoEvent event );
 }

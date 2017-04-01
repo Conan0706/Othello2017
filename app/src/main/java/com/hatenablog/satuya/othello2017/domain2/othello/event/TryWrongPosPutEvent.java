@@ -10,5 +10,6 @@ import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
 public interface TryWrongPosPutEvent {
 
     Point getWrongPoint();
+
     Color getWrongColor();
 }

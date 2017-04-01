@@ -14,16 +14,24 @@ public interface Board {
     void init();
 
     int countDisc( int color );
+
     int getColor( int x, int y );
+
     int getColor( Point point );
+
     int getCurrentColor();
+
     int getTurns();
 
     ArrayList<Disc> getPuttablePos();
+
     ArrayList<Disc> getUpdateDiscs();
 
     boolean isGameOver();
+
     boolean pass();
+
     boolean put( Point point );
+
     boolean undo();
 }

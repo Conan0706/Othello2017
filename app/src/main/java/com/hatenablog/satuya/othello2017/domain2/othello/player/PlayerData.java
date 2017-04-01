@@ -7,7 +7,10 @@ package com.hatenablog.satuya.othello2017.domain2.othello.player;
 public interface PlayerData {
 
     String getName();
+
     int getID();
+
     int getWinNumber();
+
     int getLoseNumber();
 }

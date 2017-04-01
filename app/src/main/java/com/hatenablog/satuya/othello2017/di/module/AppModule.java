@@ -16,7 +16,7 @@ public class AppModule {
 
     private Application application = null;
 
-    public AppModule ( Application application ) {
+    public AppModule( Application application ) {
 
         this.application = application;
     }

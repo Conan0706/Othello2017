@@ -12,7 +12,6 @@ import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
 public class PointButton extends ImageButton {
 
 
-
     public PointButton( Context context ) {
         super( context );
     }

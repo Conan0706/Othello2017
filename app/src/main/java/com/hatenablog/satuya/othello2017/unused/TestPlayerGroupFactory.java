@@ -17,7 +17,7 @@ import com.hatenablog.satuya.othello2017.presentation.UIPlayer;
 public class TestPlayerGroupFactory implements PlayerGroupFactory {
 
     private Othello2017 othello2017 = null; //TODO null
-//    private GamePresenterImpl boardPresenterImpl = null; //TODO null
+    //    private GamePresenterImpl boardPresenterImpl = null; //TODO null
     private BoardManager boardManager = null; //TODO null
 
     private PlayerGroup playerGroup = null;

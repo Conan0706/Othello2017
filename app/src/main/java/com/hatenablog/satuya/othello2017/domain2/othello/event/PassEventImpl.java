@@ -14,6 +14,7 @@ public class PassEventImpl implements PassEvent {
 
         this.color = color;
     }
+
     @Override
     public Color getPassPlayerColor() {
         return this.color;

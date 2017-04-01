@@ -9,6 +9,8 @@ import com.hatenablog.satuya.othello2017.domain2.othello.entity.Color;
 public interface FinishEvent {
 
     Color getWinnerColor(); //引き分けは2
+
     Color getLoserColor(); //引き分けは2
+
     int getScore(); //勝者のスコア(にしたい)
 }

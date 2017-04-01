@@ -12,8 +12,12 @@ import java.util.ArrayList;
 public interface PutEvent {
 
     Color getPutPlayerColor();
+
     Disc getPutDisc(); //置いたところ
+
     ArrayList<Disc> getTurnDiscs(); //返ったところ
+
     ArrayList<Disc> getUpdateDiscs(); //置いたところ+返ったところ
+
     int getDiscNumber( int color ); //引数の色のdiscの数
 }

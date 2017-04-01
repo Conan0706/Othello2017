@@ -11,7 +11,10 @@ import com.hatenablog.satuya.othello2017.domain2.othello.observer.BoardObserver;
 public interface BoardManager {
 
     void initBoard();
+
     void addObserver( BoardObserver observer );
+
     boolean put( Point point );
+
     Board getBoard();
 }

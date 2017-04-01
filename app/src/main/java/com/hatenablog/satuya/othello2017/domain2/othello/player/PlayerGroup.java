@@ -25,7 +25,7 @@ public class PlayerGroup {
 
     public Player getWhitePlayer() {
 
-        return  this.whitePlayer;
+        return this.whitePlayer;
     }
 
     public void setManager( BoardManager manager ) {

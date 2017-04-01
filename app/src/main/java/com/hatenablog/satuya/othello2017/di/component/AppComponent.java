@@ -14,7 +14,7 @@ import dagger.Component;
         AppModule.class,
         DomainModule.class,
         PresentationModule.class,
-        }
+}
 )
 
 public interface AppComponent extends PresentationComponent {

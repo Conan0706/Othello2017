@@ -9,5 +9,6 @@ import com.hatenablog.satuya.othello2017.domain2.othello.BoardManager;
 public interface Player { //Observerとして用いる(夜考えているので後でわからなくなる可能性あり)
 
     void onTurn();
+
     void setManager( BoardManager manager );
 }

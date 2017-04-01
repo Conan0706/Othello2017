@@ -17,6 +17,7 @@ public class TryWrongPosPutEventImpl implements TryWrongPosPutEvent {
         this.point = point;
         this.color = wrongColor;
     }
+
     @Override
     public Point getWrongPoint() {
         return this.point;
