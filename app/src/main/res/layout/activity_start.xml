@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="17dp">
+
+        </GridLayout>
+        <TextView
+            android:text="Othello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" android:layout_marginTop="127dp"
+            android:id="@+id/textView2"
+            android:textSize="36sp"/>
+        <Button
+            android:text="Start"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/start_button"
+            android:layout_alignTop="@+id/past_results" android:layout_alignParentStart="true"/>
+        <Button
+            android:text="Past Results"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/past_results"
+            android:layout_marginTop="138dp"
+            android:layout_below="@+id/textView2" android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:othello2017="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hatenablog.satuya.othello2017.presentation.activity.GameActivity"
+    android:background="@android:color/holo_green_light">
+
+    <GridLayout
+        android:columnCount="8" android:rowCount="8"
+        android:id="@+id/board"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerVertical="true" android:layout_centerHorizontal="true">
+
+        <!--<ImageButton-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="50dp" othello2017:srcCompat="@android:color/holo_orange_dark"-->
+            <!--android:id="@+id/imageButton" android:layout_column="0" android:layout_row="0"-->
+            <!--android:scaleType="centerCrop" android:background="@android:color/transparent"/>-->
+
+        <!--<ImageButton-->
+            <!--style="@style/OthelloButton"-->
+            <!--android:layout_column="0" android:layout_row="0"-->
+            <!--/>-->
+
+        <!--<ImageButton-->
+            <!--style="@style/OthelloButton"-->
+            <!--android:layout_column="0" android:layout_row="1"-->
+        <!--/>-->
+
+        <!--<ImageButton-->
+            <!--style="@style/OthelloButton"-->
+            <!--android:layout_column="0" android:layout_row="2"-->
+        <!--/>-->
+
+        <!--<ImageButton-->
+            <!--style="@style/OthelloButton"-->
+            <!--android:layout_column="0" android:layout_row="3"-->
+        <!--/>-->
+
+        <!--<ImageButton-->
+            <!--style="@style/OthelloButton"-->
+            <!--android:layout_column="0" android:layout_row="4"-->
+        <!--/>-->
+
+        <!--<ImageButton-->
+            <!--style="@style/OthelloButton"-->
+            <!--android:layout_column="0" android:layout_row="0"-->
+        <!--/>-->
+    </GridLayout>
+</RelativeLayout>
