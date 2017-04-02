@@ -1,5 +1,6 @@
 package com.hatenablog.satuya.othello2017.presentation.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,5 +39,11 @@ public class StartActivity extends AppCompatActivity {
                 Log.d( "debug", "under development" );
             }
         } );
+    }
+
+    public void moveGameView() {
+
+        Intent intent = new Intent( this, AnimationSampleActivity.class );
+        startActivity( intent );
     }
 }

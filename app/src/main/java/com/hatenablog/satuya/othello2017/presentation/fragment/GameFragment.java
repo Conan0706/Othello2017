@@ -280,10 +280,10 @@ public class GameFragment extends Fragment implements GameView {
 
                             if ( beforeDisc.color == BLACK ) {
                                 buttons[i][j].setImageResource( R.drawable.white_stone );
-                                buttons[i][j].setTag( putDisc );
+                                buttons[i][j].setTag( putDisc ); //setTag
                             } else {
                                 buttons[i][j].setImageResource( R.drawable.black_stone );
-                                buttons[i][j].setTag( putDisc );
+                                buttons[i][j].setTag( putDisc ); //setTag
                             }
 
                             scaleUpAnimation = AnimationUtils.loadAnimation( getContext(), R.anim.scale_up );
@@ -341,9 +341,13 @@ public class GameFragment extends Fragment implements GameView {
                     if ( putDisc.color == BLACK ) {
                         buttons[i][j].setVisibility( View.INVISIBLE );
                         buttons[i][j].setImageResource( R.drawable.black_stone );
+
+                        buttons[i][j].setTag( putDisc );
                     } else if ( putDisc.color == WHITE ) {
                         buttons[i][j].setVisibility( View.INVISIBLE );
                         buttons[i][j].setImageResource( R.drawable.white_stone );
+
+                        buttons[i][j].setTag( putDisc );
                     }
 
                     buttons[i][j].startAnimation( appearanceAnimation );

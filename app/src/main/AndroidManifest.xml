@@ -10,33 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme2">
 
-        <!-- <activity android:name=".presentation.activity.StartPresenter"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-        <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <!-- <activity android:name=".presentation.activity.SettingActivity"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN"/> -->
-
-
-        <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <activity android:name=".presentation.activity.AnimationSampleActivity">
+        <activity android:name=".presentation.activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- <activity android:name=".presentation.activity.GameActivity"> -->
-        <!-- </activity> -->
-        <!--<activity android:name=".presentation.activity.AnimationSampleActivity">-->
-        <!--</activity>-->
+        <activity android:name=".presentation.activity.AnimationSampleActivity"/>
     </application>
 
 </manifest>
