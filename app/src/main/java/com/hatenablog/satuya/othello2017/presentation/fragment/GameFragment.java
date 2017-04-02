@@ -23,6 +23,7 @@ import com.hatenablog.satuya.othello2017.di.component.AppComponent;
 import com.hatenablog.satuya.othello2017.domain2.othello.OthelloUtility;
 import com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.presentation.InitBoardDelegate;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
@@ -43,32 +44,36 @@ import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.WHIT
 public class GameFragment extends Fragment implements GameView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    protected static final String ARG_PARAM1 = "param1";
+    protected static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    protected String mParam1;
+    protected String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    protected OnFragmentInteractionListener mListener;
 
     public static final int BOARD_SIZE = 8;
     public static final int BOARD_SIZE_DP = 300;
     public static final float BUTTON_SIZE_DP = 37.5f;
 
-    private ImageButton[][] buttons = new ImageButton[BOARD_SIZE][BOARD_SIZE];
-    private GridLayout layout = null; //TODO null
+    protected ImageButton[][] buttons = new ImageButton[BOARD_SIZE][BOARD_SIZE];
+    protected GridLayout layout = null; //TODO null
 
-    private Handler handler = new Handler();
+    protected Handler handler = new Handler();
 
-    private Context context = null;
+    protected Context context = null;
 
-    private Animation appearanceAnimation, scaleUpAnimation, scaleDownAnimation;
+    protected View view = null;
 
-    private boolean hasAnimated = true;
+    protected Animation appearanceAnimation, scaleUpAnimation, scaleDownAnimation;
+
+    protected boolean hasAnimated = true;
 
     @Inject
     GamePresenter presenter = null;
+
+    protected InitBoardDelegate delegate = null;
 
     public GameFragment() {
         // Required empty public constructor
@@ -104,8 +109,6 @@ public class GameFragment extends Fragment implements GameView {
         scaleDownAnimation = AnimationUtils.loadAnimation( getContext(), R.anim.scale_down );
         scaleUpAnimation = AnimationUtils.loadAnimation( getContext(), R.anim.scale_up );
 
-        initBoard();
-
         Othello2017 app = (Othello2017) context.getApplicationContext();
         AppComponent component = app.getAppComponent();
         component.inject( this );
@@ -125,7 +128,11 @@ public class GameFragment extends Fragment implements GameView {
 
         super.onViewCreated( view, bundle );
 
-        layout = (GridLayout) view.findViewById( R.id.fragment_board );
+        this.view = view;
+
+        this.delegate = new InitBoardDelegate( this );
+        initBoard();
+//        layout = (GridLayout) view.findViewById( R.id.fragment_board );
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -157,48 +164,50 @@ public class GameFragment extends Fragment implements GameView {
     @Override
     public void initBoard() {
 
-        handler.post( new Runnable() {
-            @Override
-            public void run() {
-                final int size = convertDpToPx( BUTTON_SIZE_DP );
+        delegate.initBoard( buttons, getContext(), presenter, convertDpToPx( BOARD_SIZE_DP ) );
 
-                for ( int i = 0; i < BOARD_SIZE; i++ ) {
-                    for ( int j = 0; j < BOARD_SIZE; j++ ) {
-                        ImageButton button = buttons[i][j] = new ImageButton( getContext() );
-                        button.setScaleType( ImageView.ScaleType.CENTER_CROP );
-                        button.setBackgroundColor( Color.TRANSPARENT );
-                        button.setImageResource( R.drawable.empty );
-
-                        button.setTag( new Disc( i + 1, j + 1, Disc.EMPTY ) );
-
-                        if ( ( i == 3 && j == 3 ) || ( i == 4 && j == 4 ) ) {
-                            button.setImageResource( R.drawable.white_stone );
-                            button.setTag( new Disc( i + 1, j + 1, Disc.WHITE ) );
-                        }
-
-                        if ( ( i == 3 && j == 4 ) || ( i == 4 && j == 3 ) ) {
-                            button.setImageResource( R.drawable.black_stone );
-                            button.setTag( new Disc( i + 1, j + 1, Disc.BLACK ) );
-                        }
-
-                        button.setOnClickListener( new View.OnClickListener() {
-                            @Override
-                            public void onClick( View v ) {
-                                presenter.onClick( v );
-                            }
-                        } );
-
-                        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
-                        layoutParams.width = size;
-                        layoutParams.height = size;
-                        layoutParams.columnSpec = GridLayout.spec( i );
-                        layoutParams.rowSpec = GridLayout.spec( j );
-                        button.setLayoutParams( layoutParams );
-                        layout.addView( button );
-                    }
-                }
-            }
-        } );
+//        handler.post( new Runnable() {
+//            @Override
+//            public void run() {
+//                final int size = convertDpToPx( BUTTON_SIZE_DP );
+//
+//                for ( int i = 0; i < BOARD_SIZE; i++ ) {
+//                    for ( int j = 0; j < BOARD_SIZE; j++ ) {
+//                        ImageButton button = buttons[i][j] = new ImageButton( getContext() );
+//                        button.setScaleType( ImageView.ScaleType.CENTER_CROP );
+//                        button.setBackgroundColor( Color.TRANSPARENT );
+//                        button.setImageResource( R.drawable.empty );
+//
+//                        button.setTag( new Disc( i + 1, j + 1, Disc.EMPTY ) );
+//
+//                        if ( ( i == 3 && j == 3 ) || ( i == 4 && j == 4 ) ) {
+//                            button.setImageResource( R.drawable.white_stone );
+//                            button.setTag( new Disc( i + 1, j + 1, Disc.WHITE ) );
+//                        }
+//
+//                        if ( ( i == 3 && j == 4 ) || ( i == 4 && j == 3 ) ) {
+//                            button.setImageResource( R.drawable.black_stone );
+//                            button.setTag( new Disc( i + 1, j + 1, Disc.BLACK ) );
+//                        }
+//
+//                        button.setOnClickListener( new View.OnClickListener() {
+//                            @Override
+//                            public void onClick( View v ) {
+//                                presenter.onClick( v );
+//                            }
+//                        } );
+//
+//                        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
+//                        layoutParams.width = size;
+//                        layoutParams.height = size;
+//                        layoutParams.columnSpec = GridLayout.spec( i );
+//                        layoutParams.rowSpec = GridLayout.spec( j );
+//                        button.setLayoutParams( layoutParams );
+//                        layout.addView( button );
+//                    }
+//                }
+//            }
+//        } );
     }
 
     @Override
@@ -256,7 +265,7 @@ public class GameFragment extends Fragment implements GameView {
         void onFragmentInteraction( Uri uri );
     }
 
-    synchronized private void animateButtonColor( final Disc putDisc ) {
+    synchronized protected void animateButtonColor( final Disc putDisc ) {
 
         hasAnimated = false;
 
@@ -357,9 +366,14 @@ public class GameFragment extends Fragment implements GameView {
         }
     }
 
-    private int convertDpToPx( float dp ) {
+    protected int convertDpToPx( float dp ) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         float result = dp * metrics.density;
         return (int) result;
+    }
+
+    public View findViewById( int id ) {
+
+        return view.findViewById( id );
     }
 }

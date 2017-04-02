@@ -11,8 +11,8 @@
     <GridLayout
         android:id="@+id/fragment_board"
         android:layout_width="300dp" android:layout_height="300dp"
-        android:layout_centerHorizontal="true" android:layout_centerVertical="true"
-        tools:layout_editor_absoluteX="30dp" tools:layout_editor_absoluteY="133dp">
+        tools:layout_editor_absoluteX="30dp" tools:layout_editor_absoluteY="133dp"
+        android:layout_centerVertical="true" android:layout_centerHorizontal="true">
 
     </GridLayout>
 </RelativeLayout>

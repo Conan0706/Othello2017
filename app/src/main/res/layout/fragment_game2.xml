@@ -5,9 +5,9 @@
                 android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/base_board"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:orientation="vertical" android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_height="300dp" android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" android:orientation="vertical">
     </LinearLayout>
 </RelativeLayout>
