@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hatenablog.satuya.othello2017.R;
-import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
@@ -49,7 +48,7 @@ public class GameActivity extends AppCompatActivity implements GameView {
         this.layout = (GridLayout) findViewById( R.id.board );
 
 //        ( (Othello2017) getApplication() ).getAppComponent().inject( this );
-        presenter.setBoardView( this );
+        presenter.setGameView( this );
 
         initBoard();
     }

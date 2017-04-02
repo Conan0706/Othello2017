@@ -108,7 +108,7 @@ public class GameFragment extends Fragment implements GameView {
         Othello2017 app = (Othello2017) context.getApplicationContext();
         AppComponent component = app.getAppComponent();
         component.inject( this );
-        presenter.setBoardView( this );
+        presenter.setGameView( this );
     }
 
     @Override

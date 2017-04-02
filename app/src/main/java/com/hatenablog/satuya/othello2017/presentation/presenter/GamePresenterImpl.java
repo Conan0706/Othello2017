@@ -39,7 +39,7 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
     }
 
     @Override
-    public void setBoardView( GameView view ) {
+    public void setGameView( GameView view ) {
 
         this.view = view;
     }

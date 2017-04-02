@@ -11,6 +11,5 @@ import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 public interface GamePresenter {
 
     void onClick( View view );
-
-    void setBoardView( GameView view );
+    void setGameView( GameView view );
 }
