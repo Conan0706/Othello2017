@@ -1,4 +1,4 @@
-package com.hatenablog.satuya.othello2017.presentation;
+package com.hatenablog.satuya.othello2017.presentation.delegate.init_board;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -20,11 +20,11 @@ import static com.hatenablog.satuya.othello2017.presentation.fragment.GameFragme
  * Created by Shusei on 2017/04/02.
  */
 
-public class InitBoardDelegate {
+public class InitBoardDelegateImpl implements InitBoardDelegate {
 
     protected ViewGroup layout = null;
 
-    public InitBoardDelegate( GameFragment fragment ) {
+    public InitBoardDelegateImpl( GameFragment fragment ) {
 
         layout = (ViewGroup) fragment.findViewById( R.id.fragment_board );
     }
@@ -78,5 +78,15 @@ public class InitBoardDelegate {
                 }
             }
         } );
+    }
+
+    @Override
+    public int getLayoutID() {
+        return 0;
+    }
+
+    @Override
+    public void initBoard() {
+
     }
 }

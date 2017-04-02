@@ -1,7 +1,6 @@
 package com.hatenablog.satuya.othello2017.presentation.fragment;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -15,15 +14,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.hatenablog.satuya.othello2017.R;
 import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
-import com.hatenablog.satuya.othello2017.domain2.othello.OthelloUtility;
 import com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
-import com.hatenablog.satuya.othello2017.presentation.InitBoardDelegate;
+import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegateImpl;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
@@ -73,7 +69,7 @@ public class GameFragment extends Fragment implements GameView {
     @Inject
     GamePresenter presenter = null;
 
-    protected InitBoardDelegate delegate = null;
+    protected InitBoardDelegateImpl delegate = null;
 
     public GameFragment() {
         // Required empty public constructor
@@ -130,7 +126,7 @@ public class GameFragment extends Fragment implements GameView {
 
         this.view = view;
 
-        this.delegate = new InitBoardDelegate( this );
+        this.delegate = new InitBoardDelegateImpl( this );
         initBoard();
 //        layout = (GridLayout) view.findViewById( R.id.fragment_board );
     }
@@ -164,67 +160,21 @@ public class GameFragment extends Fragment implements GameView {
     @Override
     public void initBoard() {
 
-        delegate.initBoard( buttons, getContext(), presenter, convertDpToPx( BOARD_SIZE_DP ) );
-
-//        handler.post( new Runnable() {
-//            @Override
-//            public void run() {
-//                final int size = convertDpToPx( BUTTON_SIZE_DP );
-//
-//                for ( int i = 0; i < BOARD_SIZE; i++ ) {
-//                    for ( int j = 0; j < BOARD_SIZE; j++ ) {
-//                        ImageButton button = buttons[i][j] = new ImageButton( getContext() );
-//                        button.setScaleType( ImageView.ScaleType.CENTER_CROP );
-//                        button.setBackgroundColor( Color.TRANSPARENT );
-//                        button.setImageResource( R.drawable.empty );
-//
-//                        button.setTag( new Disc( i + 1, j + 1, Disc.EMPTY ) );
-//
-//                        if ( ( i == 3 && j == 3 ) || ( i == 4 && j == 4 ) ) {
-//                            button.setImageResource( R.drawable.white_stone );
-//                            button.setTag( new Disc( i + 1, j + 1, Disc.WHITE ) );
-//                        }
-//
-//                        if ( ( i == 3 && j == 4 ) || ( i == 4 && j == 3 ) ) {
-//                            button.setImageResource( R.drawable.black_stone );
-//                            button.setTag( new Disc( i + 1, j + 1, Disc.BLACK ) );
-//                        }
-//
-//                        button.setOnClickListener( new View.OnClickListener() {
-//                            @Override
-//                            public void onClick( View v ) {
-//                                presenter.onClick( v );
-//                            }
-//                        } );
-//
-//                        GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
-//                        layoutParams.width = size;
-//                        layoutParams.height = size;
-//                        layoutParams.columnSpec = GridLayout.spec( i );
-//                        layoutParams.rowSpec = GridLayout.spec( j );
-//                        button.setLayoutParams( layoutParams );
-//                        layout.addView( button );
-//                    }
-//                }
-//            }
-//        } );
+        delegate.initBoard( buttons, getContext(), presenter, convertDpToPx( BUTTON_SIZE_DP ) );
     }
 
     @Override
     public void showBoard() {
-
     }
 
     @Override
     public void hideBoard() {
-
     }
 
     @Override
     public void putDisc( Disc disc ) {
 
         animateButtonColor( disc );
-
         Log.d( "putDisc", "x:" + disc.x + "\ny:" + disc.y );
     }
 
@@ -248,6 +198,11 @@ public class GameFragment extends Fragment implements GameView {
     @Override
     public void showWrongPosPut( String text ) {
 
+    }
+
+    @Override
+    public GamePresenter getPresenter() {
+        return presenter;
     }
 
     /**
