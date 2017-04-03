@@ -19,7 +19,9 @@ import com.hatenablog.satuya.othello2017.R;
 import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
 import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegate;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegateImpl;
+import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardWithDividerDelegate;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
@@ -64,12 +66,10 @@ public class GameFragment extends Fragment implements GameView {
 
     protected Animation appearanceAnimation, scaleUpAnimation, scaleDownAnimation;
 
-    protected boolean hasAnimated = true;
-
     @Inject
     GamePresenter presenter = null;
 
-    protected InitBoardDelegateImpl delegate = null;
+    protected InitBoardDelegate delegate = null;
 
     public GameFragment() {
         // Required empty public constructor
@@ -116,7 +116,8 @@ public class GameFragment extends Fragment implements GameView {
                               Bundle savedInstanceState ) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate( R.layout.fragment_game, container, false );
+//        return inflater.inflate( R.layout.fragment_game, container, false );
+        return inflater.inflate( R.layout.fragment_game2, container, false );
     }
 
     @Override
@@ -126,7 +127,8 @@ public class GameFragment extends Fragment implements GameView {
 
         this.view = view;
 
-        this.delegate = new InitBoardDelegateImpl( this );
+//        this.delegate = new InitBoardDelegateImpl( this );
+        this.delegate = new InitBoardWithDividerDelegate( this );
         initBoard();
 //        layout = (GridLayout) view.findViewById( R.id.fragment_board );
     }
@@ -160,7 +162,7 @@ public class GameFragment extends Fragment implements GameView {
     @Override
     public void initBoard() {
 
-        delegate.initBoard( buttons, getContext(), presenter, convertDpToPx( BUTTON_SIZE_DP ) );
+        delegate.initBoard( buttons, presenter, convertDpToPx( BUTTON_SIZE_DP ) );
     }
 
     @Override
@@ -216,8 +218,6 @@ public class GameFragment extends Fragment implements GameView {
     }
 
     synchronized protected void animateButtonColor( final Disc putDisc ) {
-
-        hasAnimated = false;
 
         final int i = putDisc.x - 1;
         final int j = putDisc.y - 1;

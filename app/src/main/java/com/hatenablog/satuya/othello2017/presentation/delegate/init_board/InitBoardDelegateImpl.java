@@ -24,12 +24,14 @@ public class InitBoardDelegateImpl implements InitBoardDelegate {
 
     protected ViewGroup layout = null;
 
+    protected Context context = null;
+
     public InitBoardDelegateImpl( GameFragment fragment ) {
 
-        layout = (ViewGroup) fragment.findViewById( R.id.fragment_board );
+        layout = (ViewGroup) fragment.findViewById( R.id.board2 );
     }
 
-    public void initBoard( final ImageButton[][] buttons, final Context context,
+    public void initBoard( final ImageButton[][] buttons,
                            final GamePresenter presenter, final int size ) {
 
         Handler handler = new Handler();
@@ -83,10 +85,5 @@ public class InitBoardDelegateImpl implements InitBoardDelegate {
     @Override
     public int getLayoutID() {
         return 0;
-    }
-
-    @Override
-    public void initBoard() {
-
     }
 }
