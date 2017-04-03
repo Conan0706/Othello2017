@@ -13,16 +13,16 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hatenablog.satuya.othello2017.R;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Point;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
 import javax.inject.Inject;
 
-import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.BLACK;
-import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.EMPTY;
-import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.WHITE;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.EMPTY;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.WHITE;
 
 
 public class GameActivity extends AppCompatActivity implements GameView {

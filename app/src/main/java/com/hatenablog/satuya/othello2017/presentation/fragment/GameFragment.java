@@ -18,16 +18,16 @@ import android.widget.ImageButton;
 import com.hatenablog.satuya.othello2017.R;
 import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegateImpl;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
 import javax.inject.Inject;
 
-import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.BLACK;
-import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.EMPTY;
-import static com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc.WHITE;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.EMPTY;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.WHITE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -198,11 +198,6 @@ public class GameFragment extends Fragment implements GameView {
     @Override
     public void showWrongPosPut( String text ) {
 
-    }
-
-    @Override
-    public GamePresenter getPresenter() {
-        return presenter;
     }
 
     /**

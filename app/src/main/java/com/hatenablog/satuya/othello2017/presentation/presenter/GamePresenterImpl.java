@@ -2,15 +2,15 @@ package com.hatenablog.satuya.othello2017.presentation.presenter;
 
 import android.view.View;
 
-import com.hatenablog.satuya.othello2017.domain2.othello.BoardManager;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Color;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
-import com.hatenablog.satuya.othello2017.domain2.othello.event.FinishEvent;
-import com.hatenablog.satuya.othello2017.domain2.othello.event.PassEvent;
-import com.hatenablog.satuya.othello2017.domain2.othello.event.PutEvent;
-import com.hatenablog.satuya.othello2017.domain2.othello.event.TryWrongPosPutEvent;
-import com.hatenablog.satuya.othello2017.domain2.othello.observer.BoardObserver;
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.domain.othello.BoardManager;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Color;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.domain.othello.event.FinishEvent;
+import com.hatenablog.satuya.othello2017.domain.othello.event.PassEvent;
+import com.hatenablog.satuya.othello2017.domain.othello.event.PutEvent;
+import com.hatenablog.satuya.othello2017.domain.othello.event.TryWrongPosPutEvent;
+import com.hatenablog.satuya.othello2017.domain.othello.observer.BoardObserver;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 import com.hatenablog.satuya.othello2017.usecase.PosInputUseCase;
 

@@ -1,9 +1,9 @@
 package com.hatenablog.satuya.othello2017.usecase;
 
-import com.hatenablog.satuya.othello2017.domain2.othello.entity.Point;
-import com.hatenablog.satuya.othello2017.domain2.othello.player.Player;
-import com.hatenablog.satuya.othello2017.domain2.othello.player.PlayerGroup;
-import com.hatenablog.satuya.othello2017.presentation.UIPlayer;
+import com.hatenablog.satuya.othello2017.domain.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.domain.othello.player.Player;
+import com.hatenablog.satuya.othello2017.domain.othello.player.PlayerGroup;
+import com.hatenablog.satuya.othello2017.domain.othello.player.UIPlayer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
