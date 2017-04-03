@@ -20,10 +20,11 @@ import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
 import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegate;
-import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegateImpl;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardWithDividerDelegate;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
+
+import java.util.Arrays;
 
 import javax.inject.Inject;
 
@@ -39,7 +40,7 @@ import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.WHITE
  * Use the {@link GameFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GameFragment extends Fragment implements GameView {
+public class GameFragment extends Fragment implements GameView, View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     protected static final String ARG_PARAM1 = "param1";
@@ -57,6 +58,10 @@ public class GameFragment extends Fragment implements GameView {
 
     protected ImageButton[][] buttons = new ImageButton[BOARD_SIZE][BOARD_SIZE];
     protected GridLayout layout = null; //TODO null
+
+//    protected boolean isAnimating[][] = new boolean[BOARD_SIZE][BOARD_SIZE];
+
+    protected boolean isAnimating = false;
 
     protected Handler handler = new Handler();
 
@@ -109,6 +114,8 @@ public class GameFragment extends Fragment implements GameView {
         AppComponent component = app.getAppComponent();
         component.inject( this );
         presenter.setGameView( this );
+
+//        Arrays.fill( isAnimating, false );
     }
 
     @Override
@@ -202,6 +209,13 @@ public class GameFragment extends Fragment implements GameView {
 
     }
 
+    @Override
+    public void onClick( View v ) {
+
+        if ( !isAnimating )
+        presenter.onClick( v );
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -218,6 +232,8 @@ public class GameFragment extends Fragment implements GameView {
     }
 
     synchronized protected void animateButtonColor( final Disc putDisc ) {
+
+        isAnimating = true;
 
         final int i = putDisc.x - 1;
         final int j = putDisc.y - 1;
@@ -255,11 +271,11 @@ public class GameFragment extends Fragment implements GameView {
                                 @Override
                                 public void onAnimationEnd( Animation animation ) {
                                     buttons[i][j].clearAnimation();
+                                    isAnimating = false;
                                 }
 
                                 @Override
                                 public void onAnimationRepeat( Animation animation ) {
-
                                 }
                             } );
 
@@ -289,6 +305,7 @@ public class GameFragment extends Fragment implements GameView {
                         @Override
                         public void onAnimationEnd( Animation animation ) {
                             buttons[i][j].clearAnimation();
+                            isAnimating = false;
                         }
 
                         @Override

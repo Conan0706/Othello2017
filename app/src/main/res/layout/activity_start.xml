@@ -8,35 +8,35 @@
         android:layout_height="match_parent">
 
         <GridLayout
+            android:id="@+id/gridLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="2"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="17dp">
+            android:layout_marginBottom="17dp"
+            android:columnCount="2" android:rowCount="2">
 
         </GridLayout>
         <TextView
-            android:text="Othello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" android:layout_marginTop="127dp"
             android:id="@+id/textView2"
-            android:textSize="36sp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Othello"
+            android:textSize="36sp"
+            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
         <Button
-            android:text="Start"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
             android:id="@+id/start_button"
-            android:layout_alignTop="@+id/past_results" android:layout_alignParentStart="true"/>
-        <Button
-            android:text="Past Results"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:text="Start"
+            android:layout_alignTop="@+id/past_results" android:layout_toStartOf="@+id/textView2"/>
+        <Button
             android:id="@+id/past_results"
-            android:layout_marginTop="138dp"
-            android:layout_below="@+id/textView2" android:layout_alignParentEnd="true"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Past Results"
+            android:layout_marginBottom="70dp"
+            android:layout_above="@+id/gridLayout" android:layout_toEndOf="@+id/textView2"/>
     </RelativeLayout>
 
 </LinearLayout>

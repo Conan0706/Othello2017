@@ -10,6 +10,7 @@
     <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar"/>
     <style name="AppTheme2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme3" parent="Theme.AppCompat.NoActionBar"/>
 
     <!--<style name="OthelloButton">-->
     <!--<item name="android:layout_width">50dp</item>-->

@@ -94,12 +94,7 @@ public class InitBoardWithDividerDelegate implements InitBoardDelegate {
                     button.setTag( new Disc( i + 1, j + 1, Disc.BLACK ) );
                 }
 
-                button.setOnClickListener( new View.OnClickListener() {
-                    @Override
-                    public void onClick( View v ) {
-                        presenter.onClick( v );
-                    }
-                } );
+                button.setOnClickListener( fragment );
 
                 rowLayout.addView( imageButtons[i][j], new LinearLayout.LayoutParams(
                         0, ViewGroup.LayoutParams.MATCH_PARENT, 1 ) );
