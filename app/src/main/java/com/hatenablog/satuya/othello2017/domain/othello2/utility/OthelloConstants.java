@@ -1,4 +1,4 @@
-package com.hatenablog.satuya.othello2017.domain.othello.utility;
+package com.hatenablog.satuya.othello2017.domain.othello2.utility;
 
 /**
  * Created by Shusei on 2017/04/03.
