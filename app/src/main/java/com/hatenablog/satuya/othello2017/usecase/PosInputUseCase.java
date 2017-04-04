@@ -9,4 +9,6 @@ import com.hatenablog.satuya.othello2017.domain.othello.entity.Point;
 public interface PosInputUseCase {
 
     void onClick( Point point );
+
+    void onUIPutFinished();
 }

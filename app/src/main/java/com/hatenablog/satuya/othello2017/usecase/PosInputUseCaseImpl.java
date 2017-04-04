@@ -51,4 +51,10 @@ public class PosInputUseCaseImpl implements PosInputUseCase {
             player.putClicked( point );
         }
     }
+
+    @Override
+    public void onUIPutFinished() {
+
+        uiPlayers.get( 0 ).onUIPutFinished();
+    }
 }

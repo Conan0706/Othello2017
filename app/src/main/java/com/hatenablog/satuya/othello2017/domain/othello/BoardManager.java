@@ -17,4 +17,6 @@ public interface BoardManager {
     boolean put( Point point );
 
     Board getBoard();
+
+    void onUIPutFinished();
 }

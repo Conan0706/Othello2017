@@ -45,6 +45,12 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
     }
 
     @Override
+    public void onUIPutFinished() {
+
+        this.useCase.onUIPutFinished();
+    }
+
+    @Override
     public void onPut( PutEvent event ) {
 
         Disc disc = event.getPutDisc();

@@ -21,22 +21,22 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Othello"
-            android:textSize="36sp"
-            android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Othello" android:textSize="36sp"/>
         <Button
             android:id="@+id/start_button"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:text="Start"
-            android:layout_alignTop="@+id/past_results" android:layout_toStartOf="@+id/textView2"/>
+            android:layout_alignTop="@+id/past_results"
+            android:layout_toStartOf="@+id/textView2" android:text="Start"/>
         <Button
             android:id="@+id/past_results"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:text="Past Results"
+            android:layout_above="@+id/gridLayout"
             android:layout_marginBottom="70dp"
-            android:layout_above="@+id/gridLayout" android:layout_toEndOf="@+id/textView2"/>
+            android:layout_toEndOf="@+id/textView2" android:text="Past Results"/>
     </RelativeLayout>
 
 </LinearLayout>

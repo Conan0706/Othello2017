@@ -12,7 +12,9 @@ import com.hatenablog.satuya.othello2017.domain.othello.event.PutEventImpl;
 import com.hatenablog.satuya.othello2017.domain.othello.event.TryWrongPosPutEvent;
 import com.hatenablog.satuya.othello2017.domain.othello.event.TryWrongPosPutEventImpl;
 import com.hatenablog.satuya.othello2017.domain.othello.observer.BoardObserver;
+import com.hatenablog.satuya.othello2017.domain.othello.player.Player;
 import com.hatenablog.satuya.othello2017.domain.othello.player.PlayerGroup;
+import com.hatenablog.satuya.othello2017.domain.othello.player.UIPlayer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,6 +22,7 @@ import java.util.Iterator;
 import javax.inject.Inject;
 
 import static com.hatenablog.satuya.othello2017.domain.othello.OthelloUtility.convertColorCodeToColor;
+import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK;
 
 /**
  * Created by Shusei on 2017/03/15.
@@ -40,6 +43,8 @@ public class BoardManagerImpl implements BoardManager {
     private Board board = null; //TODO null
 
     private int currentColorCode = Integer.MIN_VALUE; //MIN_VALUEに意味はない
+
+    private boolean isUIPutFinished = true;
 
     @Inject
     public BoardManagerImpl( Board board, PlayerGroup group ) {
@@ -86,12 +91,31 @@ public class BoardManagerImpl implements BoardManager {
             onPassed();
         }
 
+        if ( this.currentColorCode == BLACK ) {
+            Player player = playerGroup.getBlackPlayer();
+            if ( player instanceof UIPlayer ) {
+//                isUIPutFinished = false;
+                isUIPutFinished = true;
+            }
+        } else {
+            Player player = playerGroup.getWhitePlayer();
+            if ( player instanceof UIPlayer ) {
+//                isUIPutFinished = false;
+                isUIPutFinished = true;
+            }
+        }
+
         this.currentColorCode = board.getCurrentColor();
 
         new Thread( new Runnable() {
             @Override
             public void run() {
-                turnChange( BoardManagerImpl.this.currentColorCode );
+                while ( true ) {
+                    if ( isUIPutFinished ) {
+                        turnChange( BoardManagerImpl.this.currentColorCode );
+                        break;
+                    }
+                }
             }
         } ).start();
 
@@ -115,6 +139,12 @@ public class BoardManagerImpl implements BoardManager {
         return this.board;
     }
 
+    @Override
+    public void onUIPutFinished() {
+
+        isUIPutFinished = true;
+    }
+
     private void onTryWrongPosPut( Point point ) {
 
         TryWrongPosPutEvent event =
@@ -125,11 +155,16 @@ public class BoardManagerImpl implements BoardManager {
             BoardObserver observer = iterator.next();
             observer.onTryWrongPosPut( event );
         }
+
+        for ( BoardObserver observer : observers ) {
+
+            observer.onTryWrongPosPut( event );
+        }
     }
 
     private void onFinished() {
 
-        int blackNumber = this.board.countDisc( Disc.BLACK );
+        int blackNumber = this.board.countDisc( BLACK );
         int whiteNumber = this.board.countDisc( Disc.WHITE );
 
         Color winnerColor = null;
@@ -168,7 +203,7 @@ public class BoardManagerImpl implements BoardManager {
     private void onPut() {
 
         PutEventImpl event = new PutEventImpl( convertColorCodeToColor( this.currentColorCode ),
-                this.board.getUpdateDiscs(), this.board.countDisc( Disc.BLACK ), this.board.countDisc( Disc.WHITE ) );
+                this.board.getUpdateDiscs(), this.board.countDisc( BLACK ), this.board.countDisc( Disc.WHITE ) );
         //冗長すぎる
 
         Iterator<BoardObserver> iterator = observers.iterator();
@@ -194,7 +229,7 @@ public class BoardManagerImpl implements BoardManager {
 
     private void turnChange( int colorCode ) {
 
-        if ( colorCode == Disc.BLACK ) {
+        if ( colorCode == BLACK ) {
             playerGroup.getBlackPlayer().onTurn();
         } else {
             playerGroup.getWhitePlayer().onTurn();

@@ -49,4 +49,9 @@ public class UIPlayer implements Player {
 
         this.boardManager = manager;
     }
+
+    public void onUIPutFinished() {
+
+        this.boardManager.onUIPutFinished();
+    }
 }

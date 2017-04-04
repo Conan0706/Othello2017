@@ -12,4 +12,6 @@ public interface GamePresenter {
 
     void onClick( View view );
     void setGameView( GameView view );
+
+    void onUIPutFinished();
 }
