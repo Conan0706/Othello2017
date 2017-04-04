@@ -18,20 +18,18 @@ import android.widget.ImageButton;
 import com.hatenablog.satuya.othello2017.R;
 import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
-import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegate;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardWithDividerDelegate;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
-import java.util.Arrays;
-
 import javax.inject.Inject;
 
-import static com.hatenablog.satuya.othello2017.domain.othello.OthelloConstants.BOARD_SIZE;
-import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK;
-import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.EMPTY;
-import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.WHITE;
+import static com.hatenablog.satuya.othello2017.model.othello2.OthelloConstants.BOARD_SIZE;
+import static com.hatenablog.satuya.othello2017.model.othello.entity.Disc.BLACK;
+import static com.hatenablog.satuya.othello2017.model.othello.entity.Disc.EMPTY;
+import static com.hatenablog.satuya.othello2017.model.othello.entity.Disc.WHITE;
 
 /**
  * A simple {@link Fragment} subclass.

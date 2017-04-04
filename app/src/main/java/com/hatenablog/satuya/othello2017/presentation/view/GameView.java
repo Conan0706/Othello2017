@@ -1,7 +1,6 @@
 package com.hatenablog.satuya.othello2017.presentation.view;
 
-import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 
 /**
  * Created by Shusei on 2017/03/05.

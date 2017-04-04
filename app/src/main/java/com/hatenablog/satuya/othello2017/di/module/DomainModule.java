@@ -1,16 +1,16 @@
 package com.hatenablog.satuya.othello2017.di.module;
 
 import com.hatenablog.satuya.othello2017.application.Othello2017;
-import com.hatenablog.satuya.othello2017.domain.othello.BoardManagerImpl;
-import com.hatenablog.satuya.othello2017.domain.othello.BoardManager;
-import com.hatenablog.satuya.othello2017.domain.othello.algorithm.AI;
-import com.hatenablog.satuya.othello2017.domain.othello.algorithm.TestAI;
-import com.hatenablog.satuya.othello2017.domain.othello.engine.Board;
-import com.hatenablog.satuya.othello2017.domain.othello.engine.BoardImpl;
-import com.hatenablog.satuya.othello2017.domain.othello.entity.Color;
-import com.hatenablog.satuya.othello2017.domain.othello.player.PlayerGroup;
-import com.hatenablog.satuya.othello2017.domain.othello.player.PlayerType;
-import com.hatenablog.satuya.othello2017.domain.othello.player.UIPlayer;
+import com.hatenablog.satuya.othello2017.model.othello.BoardManagerImpl;
+import com.hatenablog.satuya.othello2017.model.othello.BoardManager;
+import com.hatenablog.satuya.othello2017.model.othello.algorithm.AI;
+import com.hatenablog.satuya.othello2017.model.othello.algorithm.TestAI;
+import com.hatenablog.satuya.othello2017.model.othello.engine.Board;
+import com.hatenablog.satuya.othello2017.model.othello.engine.BoardImpl;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Color;
+import com.hatenablog.satuya.othello2017.model.othello.player.PlayerGroup;
+import com.hatenablog.satuya.othello2017.model.othello.player.PlayerType;
+import com.hatenablog.satuya.othello2017.model.othello.player.UIPlayer;
 import com.hatenablog.satuya.othello2017.usecase.PosInputUseCase;
 import com.hatenablog.satuya.othello2017.usecase.PosInputUseCaseImpl;
 

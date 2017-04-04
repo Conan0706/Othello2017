@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
 import com.hatenablog.satuya.othello2017.di.component.DaggerAppComponent;
-import com.hatenablog.satuya.othello2017.domain.othello.player.PlayerType;
+import com.hatenablog.satuya.othello2017.model.othello.player.PlayerType;
 import com.hatenablog.satuya.othello2017.di.module.AppModule;
 import com.hatenablog.satuya.othello2017.di.module.DomainModule;
 import com.hatenablog.satuya.othello2017.di.module.PresentationModule;

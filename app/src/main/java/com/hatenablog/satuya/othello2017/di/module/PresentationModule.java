@@ -1,6 +1,6 @@
 package com.hatenablog.satuya.othello2017.di.module;
 
-import com.hatenablog.satuya.othello2017.domain.othello.BoardManager;
+import com.hatenablog.satuya.othello2017.model.othello.BoardManager;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenterImpl;
 import com.hatenablog.satuya.othello2017.usecase.PosInputUseCase;

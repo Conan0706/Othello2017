@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.hatenablog.satuya.othello2017.R;
-import com.hatenablog.satuya.othello2017.domain.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.fragment.GameFragment;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 
