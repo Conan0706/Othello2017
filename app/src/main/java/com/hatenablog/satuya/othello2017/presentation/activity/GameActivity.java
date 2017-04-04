@@ -20,6 +20,7 @@ import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
 import javax.inject.Inject;
 
+import static com.hatenablog.satuya.othello2017.domain.othello.OthelloConstants.BOARD_SIZE;
 import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK;
 import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.EMPTY;
 import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.WHITE;
@@ -30,7 +31,7 @@ public class GameActivity extends AppCompatActivity implements GameView {
     @Inject
     GamePresenter presenter = null;
 
-    public static final int BOARD_SIZE = 8;
+//    public static final int BOARD_SIZE = 8;
     public static final int BOARD_SIZE_DP = 300;
     public static final float BUTTON_SIZE_DP = 37.5f;
 

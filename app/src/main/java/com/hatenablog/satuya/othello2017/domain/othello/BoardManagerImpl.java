@@ -30,19 +30,15 @@ import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK
 
 public class BoardManagerImpl implements BoardManager {
 
-//    public static final int PLAYER_NUMBER = 2;
-
     public static final int DUMMY_SCORE = 50; //ダミーのスコア
 
     private ArrayList<BoardObserver> observers = null;
-
-//    private BoardFactory boardFactory = null; //TODO null 3/20 23:57 ファクトリは使わずDIで統一する方針
 
     private PlayerGroup playerGroup = null; //TODO null
 
     private Board board = null; //TODO null
 
-    private int currentColorCode = Integer.MIN_VALUE; //MIN_VALUEに意味はない
+    private int currentColorCode;
 
     private boolean isUIPutFinished = true;
 
@@ -50,7 +46,6 @@ public class BoardManagerImpl implements BoardManager {
     public BoardManagerImpl( Board board, PlayerGroup group ) {
 
         this.observers = new ArrayList<>();
-//        this.board = this.boardFactory.getBoard();
         this.board = board;
         this.playerGroup = group;
         playerGroup.setManager( this );
@@ -204,7 +199,6 @@ public class BoardManagerImpl implements BoardManager {
 
         PutEventImpl event = new PutEventImpl( convertColorCodeToColor( this.currentColorCode ),
                 this.board.getUpdateDiscs(), this.board.countDisc( BLACK ), this.board.countDisc( Disc.WHITE ) );
-        //冗長すぎる
 
         Iterator<BoardObserver> iterator = observers.iterator();
         while ( iterator.hasNext() ) {
@@ -212,20 +206,6 @@ public class BoardManagerImpl implements BoardManager {
             observer.onPut( event );
         }
     }
-
-//    private Color convertColorCodeToColor( int color ) {
-//
-//        switch ( color ) {
-//            case Disc.BLACK:
-//                return Color.BLACK;
-//            case Disc.WHITE:
-//                return Color.WHITE;
-//            case Disc.EMPTY:
-//                return Color.EMPTY;
-//            default:
-//                return Color.UNKNOWN;
-//        }
-//    }
 
     private void turnChange( int colorCode ) {
 

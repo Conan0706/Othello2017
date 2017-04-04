@@ -5,20 +5,20 @@ import com.hatenablog.satuya.othello2017.domain.othello.entity.Point;
 
 import java.util.ArrayList;
 
-public class BoardImpl implements Board {
+import static com.hatenablog.satuya.othello2017.domain.othello.OthelloConstants.BOARD_SIZE;
+import static com.hatenablog.satuya.othello2017.domain.othello.OthelloConstants.MAX_TURNS;
 
-    public static final int BOARD_SIZE = 8;
-    public static final int MAX_TURNS = 60;
+public final class BoardImpl implements Board {
 
-    public static final int NONE = 0;
-    public static final int UPPER = 1;
-    public static final int UPPER_LEFT = 2;
-    public static final int LEFT = 4;
-    public static final int LOWER_LEFT = 8;
-    public static final int LOWER = 16;
-    public static final int LOWER_RIGHT = 32;
-    public static final int RIGHT = 64;
-    public static final int UPPER_RIGHT = 128;
+    private static final int NONE = 0;
+    private static final int UPPER = 1;
+    private static final int UPPER_LEFT = 2;
+    private static final int LEFT = 4;
+    private static final int LOWER_LEFT = 8;
+    private static final int LOWER = 16;
+    private static final int LOWER_RIGHT = 32;
+    private static final int RIGHT = 64;
+    private static final int UPPER_RIGHT = 128;
 
     private int turns = 0;
     private int currentColor = Disc.EMPTY;

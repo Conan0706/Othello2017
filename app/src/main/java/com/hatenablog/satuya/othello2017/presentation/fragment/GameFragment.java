@@ -28,6 +28,7 @@ import java.util.Arrays;
 
 import javax.inject.Inject;
 
+import static com.hatenablog.satuya.othello2017.domain.othello.OthelloConstants.BOARD_SIZE;
 import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.BLACK;
 import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.EMPTY;
 import static com.hatenablog.satuya.othello2017.domain.othello.entity.Disc.WHITE;
@@ -52,7 +53,7 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
 
     protected OnFragmentInteractionListener mListener;
 
-    public static final int BOARD_SIZE = 8;
+//    public static final int BOARD_SIZE = 8;
     public static final int BOARD_SIZE_DP = 300;
     public static final float BUTTON_SIZE_DP = 37.5f;
 

@@ -14,24 +14,24 @@ public class Point {
         this.y = y;
     }
 
-    public Point( String coord ) throws IllegalArgumentException {
+//    public Point( String coord ) throws IllegalArgumentException {
+//
+//        if ( coord == null || coord.length() < 2 ) {
+//            throw new IllegalArgumentException( "The argument must be Othello style coordinates." );
+//        }
+//
+//        x = coord.charAt( 0 ) - 'a' + 1;
+//        y = coord.charAt( 1 ) - '1' + 1;
+//    }
 
-        if ( coord == null || coord.length() < 2 ) {
-            throw new IllegalArgumentException( "The argument must be Othello style coordinates." );
-        }
-
-        x = coord.charAt( 0 ) - 'a' + 1;
-        y = coord.charAt( 1 ) - '1' + 1;
-    }
-
-    public String toString() {
-
-        String coord = new String();
-        coord += (char) ( 'a' + x - 1 );
-        coord += (char) ( '1' + y - 1 );
-
-        return coord;
-    }
+//    public String toString() {
+//
+//        String coord = new String();
+//        coord += (char) ( 'a' + x - 1 );
+//        coord += (char) ( '1' + y - 1 );
+//
+//        return coord;
+//    }
 
     public Point clone() {
 
