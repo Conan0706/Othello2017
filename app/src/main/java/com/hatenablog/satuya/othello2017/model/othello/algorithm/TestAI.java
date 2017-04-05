@@ -1,6 +1,6 @@
 package com.hatenablog.satuya.othello2017.model.othello.algorithm;
 
-import com.hatenablog.satuya.othello2017.model.othello.engine.Board;
+import com.hatenablog.satuya.othello2017.model.engine.Board;
 import com.hatenablog.satuya.othello2017.model.othello.BoardManager;
 import com.hatenablog.satuya.othello2017.model.othello.player.Player;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;

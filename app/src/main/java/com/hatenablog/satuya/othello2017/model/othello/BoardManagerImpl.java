@@ -1,6 +1,6 @@
 package com.hatenablog.satuya.othello2017.model.othello;
 
-import com.hatenablog.satuya.othello2017.model.othello.engine.Board;
+import com.hatenablog.satuya.othello2017.model.engine.Board;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Color;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Point;

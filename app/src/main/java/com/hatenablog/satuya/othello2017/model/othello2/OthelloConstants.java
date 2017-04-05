@@ -19,5 +19,8 @@ public final class OthelloConstants {
     public static final int HUMAN_MODE = 0;
     public static final int COMPUTER_MODE = 1;
 
+    public static final int HUMAN = 0;
+    public static final int COMPUTER = 1;
+
     private OthelloConstants() {}
 }

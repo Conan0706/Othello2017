@@ -1,4 +1,4 @@
-package com.hatenablog.satuya.othello2017.model.othello.engine;
+package com.hatenablog.satuya.othello2017.model.engine;
 
 public class ColorStorage {
 
