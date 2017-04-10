@@ -1,6 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.othello2.mode_state;
 
 import com.hatenablog.satuya.othello2017.model.engine.Board;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
 import com.hatenablog.satuya.othello2017.model.othello2.BoardManager;
 
@@ -22,7 +23,7 @@ public class ComputerModeState implements GameModeState {
     }
 
     @Override
-    public boolean put( Board board, Point point ) {
+    public boolean put( Board board, Disc disc ) {
         return false;
     }
 

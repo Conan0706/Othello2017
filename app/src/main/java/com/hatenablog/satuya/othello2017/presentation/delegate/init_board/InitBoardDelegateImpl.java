@@ -14,7 +14,7 @@ import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.fragment.GameFragment;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 
-import static com.hatenablog.satuya.othello2017.presentation.fragment.GameFragment.BOARD_SIZE;
+import static com.hatenablog.satuya.othello2017.model.othello2.OthelloConstants.BOARD_SIZE;
 
 /**
  * Created by Shusei on 2017/04/02.

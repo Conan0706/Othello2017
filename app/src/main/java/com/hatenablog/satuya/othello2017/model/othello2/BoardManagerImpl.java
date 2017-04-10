@@ -1,8 +1,11 @@
 package com.hatenablog.satuya.othello2017.model.othello2;
 
 import com.hatenablog.satuya.othello2017.model.engine.Board;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.model.othello2.entity.Move;
 import com.hatenablog.satuya.othello2017.model.othello2.mode_state.GameModeState;
+import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
 
 /**
  * Created by Shusei on 2017/04/05.
@@ -10,10 +13,10 @@ import com.hatenablog.satuya.othello2017.model.othello2.mode_state.GameModeState
 
 public class BoardManagerImpl implements BoardManager {
 
-    protected BoardNotifier notifier = null;
+    private BoardNotifier notifier = null;
 
-    protected Board board = null;
-    protected GameModeState modeState = null;
+    private Board board = null;
+    private GameModeState modeState = null;
 
     public BoardManagerImpl( Board board, GameModeState modeState ) {
 
@@ -43,15 +46,15 @@ public class BoardManagerImpl implements BoardManager {
     }
 
     @Override
-    public boolean put( Point point ) {
+    public boolean put( Move move ) {
 
-        this.modeState.put( this.board, point );
+        boolean couldPut = this.modeState.put( this.board, move );
 
         return false;
     }
 
     @Override
-    public boolean undo() {
+    public boolean undo( Player player ) {
 
         this.modeState.undo( this.board );
 
@@ -59,7 +62,7 @@ public class BoardManagerImpl implements BoardManager {
     }
 
     @Override
-    public void uiFinish() {
+    public void uiFinish( Player player ) {
 
         this.modeState.uiFinish();
     }
