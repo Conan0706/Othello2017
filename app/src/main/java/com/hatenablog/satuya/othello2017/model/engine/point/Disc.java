@@ -1,10 +1,10 @@
-package com.hatenablog.satuya.othello2017.model.othello2.entity;
+package com.hatenablog.satuya.othello2017.model.engine.point;
 
 import static com.hatenablog.satuya.othello2017.model.othello2.OthelloConstants.EMPTY;
 
 public class Disc extends Point {
 
-    protected int color;
+    public int color;
 
     public Disc() {
 
@@ -28,10 +28,5 @@ public class Disc extends Point {
 
         Disc disc = new Disc( super.x, super.y, this.color );
         return disc;
-    }
-
-    public int getColor() {
-
-        return this.color;
     }
 }

@@ -1,6 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.othello2.event;
 
 import com.hatenablog.satuya.othello2017.model.othello.entity.Color;
+import com.hatenablog.satuya.othello2017.model.othello2.other.PlayerType;
 import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
 
 /**
@@ -9,9 +10,9 @@ import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
 
 public interface FinishEvent {
 
-    Player getWinner();
+    PlayerType getWinnerType();
 
-    Player getLoser();
+    PlayerType getLoserType();
 
-    int getScore( Player player ); //勝者のスコア
+    int getScore( PlayerType playerType );
 }

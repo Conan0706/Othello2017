@@ -1,9 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.othello2;
 
 import com.hatenablog.satuya.othello2017.model.engine.Board;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
-import com.hatenablog.satuya.othello2017.model.othello2.entity.Move;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.Move;
 import com.hatenablog.satuya.othello2017.model.othello2.mode_state.GameModeState;
 import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
 

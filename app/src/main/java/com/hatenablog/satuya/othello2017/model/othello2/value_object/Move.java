@@ -1,4 +1,4 @@
-package com.hatenablog.satuya.othello2017.model.othello2.entity;
+package com.hatenablog.satuya.othello2017.model.othello2.value_object;
 
 import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.model.othello2.player.Player;

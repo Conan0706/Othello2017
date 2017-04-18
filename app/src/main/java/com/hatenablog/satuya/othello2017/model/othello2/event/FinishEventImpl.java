@@ -22,12 +22,12 @@ public class FinishEventImpl implements FinishEvent {
     }
 
     @Override
-    public Player getWinner() {
+    public Player getWinnerType() {
         return this.winner;
     }
 
     @Override
-    public Player getLoser() {
+    public Player getLoserType() {
         return this.winner;
     }
 
