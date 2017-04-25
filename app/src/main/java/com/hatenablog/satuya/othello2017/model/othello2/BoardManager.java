@@ -1,9 +1,10 @@
 package com.hatenablog.satuya.othello2017.model.othello2;
 
-import com.hatenablog.satuya.othello2017.model.engine.Board;
-import com.hatenablog.satuya.othello2017.model.othello2.value_object.Move;
-import com.hatenablog.satuya.othello2017.model.othello2.mode_state.GameModeState;
+import com.hatenablog.satuya.othello2017.model.othello2.other.EventType;
+import com.hatenablog.satuya.othello2017.model.othello2.other.GameMode;
 import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
+import com.hatenablog.satuya.othello2017.model.othello2.player.PlayerData;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.Move;
 
 /**
  * Created by Shusei on 2017/04/04.
@@ -11,17 +12,15 @@ import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
 
 public interface BoardManager {
 
-    void init();
+    void init( GameMode mode, Player blackPlayer, Player whitePlayer );
 
     void addObserver( BoardListener observer );
     void deleteObserver( BoardListener observer );
 
     boolean put( Move move );
-    boolean undo( Player player );
-    void uiFinish( Player player );
+    boolean undo( PlayerData playerData );
 
-    Board getBoard();
+    boolean check( Move move );
 
-    void setMode( int mode );
-    void setModeState( GameModeState modeState );
+    void igniteEvent( EventType type );
 }

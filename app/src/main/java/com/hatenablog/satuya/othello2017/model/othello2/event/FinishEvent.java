@@ -1,18 +1,18 @@
 package com.hatenablog.satuya.othello2017.model.othello2.event;
 
-import com.hatenablog.satuya.othello2017.model.othello.entity.Color;
+import com.hatenablog.satuya.othello2017.model.othello2.other.Color;
 import com.hatenablog.satuya.othello2017.model.othello2.other.PlayerType;
-import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
+import com.hatenablog.satuya.othello2017.model.othello2.player.PlayerData;
 
 /**
  * Created by Shusei on 2017/03/15.
  */
 
-public interface FinishEvent {
+public interface FinishEvent extends Event {
 
-    PlayerType getWinnerType();
+    PlayerData getWinner();
 
-    PlayerType getLoserType();
+    PlayerData getLoser();
 
-    int getScore( PlayerType playerType );
+    int getScore( Color color );
 }

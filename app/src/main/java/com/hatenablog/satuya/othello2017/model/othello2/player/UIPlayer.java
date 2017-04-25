@@ -1,6 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.othello2.player;
 
-import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.model.othello2.BoardManager;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.Point;
 
 /**
  * Created by Shusei on 2017/04/06.
@@ -8,6 +9,6 @@ import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
 
 public interface UIPlayer extends Player {
 
-    void put( Point point );
-    void uiFinish();
+    void put( BoardManager manager, Point point );
+    boolean canPut( BoardManager manager, Point point );
 }

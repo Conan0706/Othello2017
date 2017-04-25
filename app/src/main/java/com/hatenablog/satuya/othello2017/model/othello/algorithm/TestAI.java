@@ -25,11 +25,11 @@ public class TestAI implements AI, Player {
     @Override
     public void onTurn() {
 
-        ArrayList<Disc> discs = board.getPuttablePos();
-
-        Random random = new Random();
-        int index = random.nextInt( discs.size() );
-        manager.put( discs.get( index ) );
+//        ArrayList<Disc> discs = board.getMovablePos();
+//
+//        Random random = new Random();
+//        int index = random.nextInt( discs.size() );
+//        manager.put( discs.get( index ) );
     }
 
     @Override

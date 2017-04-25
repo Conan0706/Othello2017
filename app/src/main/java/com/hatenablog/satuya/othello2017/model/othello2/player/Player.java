@@ -6,7 +6,6 @@ package com.hatenablog.satuya.othello2017.model.othello2.player;
 
 public interface Player {
 
-    int getPlayerType();
-    int getColor();
-
+    void onTurn();
+    PlayerData getPlayerData();
 }

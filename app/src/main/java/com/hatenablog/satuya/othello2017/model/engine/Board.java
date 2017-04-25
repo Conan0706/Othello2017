@@ -1,7 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.engine;
 
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
+import com.hatenablog.satuya.othello2017.model.engine.point.DiscForCalc;
+import com.hatenablog.satuya.othello2017.model.engine.point.PointForCalc;
 
 import java.util.ArrayList;
 
@@ -17,21 +17,23 @@ public interface Board {
 
     int getColor( int x, int y );
 
-    int getColor( Point point );
+    int getColor( PointForCalc pointForCalc );
 
     int getCurrentColor();
 
     int getTurns();
 
-    ArrayList<Disc> getPuttablePos();
+    ColorStorage getColorStorage();
 
-    ArrayList<Disc> getUpdateDiscs();
+    ArrayList<DiscForCalc> getMovablePos();
+
+    ArrayList<DiscForCalc> getUpdateDiscs();
 
     boolean isGameOver();
 
     boolean pass();
 
-    boolean put( Point point );
+    boolean put( PointForCalc pointForCalc );
 
     boolean undo();
 }

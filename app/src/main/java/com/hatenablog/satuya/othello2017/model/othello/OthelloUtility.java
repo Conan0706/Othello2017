@@ -27,11 +27,11 @@ public final class OthelloUtility {
 //
 //        switch ( color ) {
 //            case BLACK:
-//                return Disc.BLACK;
+//                return DiscForCalc.BLACK;
 //            case WHITE:
-//                return Disc.WHITE;
+//                return DiscForCalc.WHITE;
 //            default:
-//                return Disc.EMPTY;
+//                return DiscForCalc.EMPTY;
 //        }
 //    }
 }

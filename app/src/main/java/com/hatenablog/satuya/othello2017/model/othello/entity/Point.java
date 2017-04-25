@@ -14,7 +14,7 @@ public class Point {
         this.y = y;
     }
 
-//    public Point( String coord ) throws IllegalArgumentException {
+//    public PointForCalc( String coord ) throws IllegalArgumentException {
 //
 //        if ( coord == null || coord.length() < 2 ) {
 //            throw new IllegalArgumentException( "The argument must be Othello style coordinates." );

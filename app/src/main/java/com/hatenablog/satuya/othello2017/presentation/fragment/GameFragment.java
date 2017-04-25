@@ -1,9 +1,9 @@
 package com.hatenablog.satuya.othello2017.presentation.fragment;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import com.hatenablog.satuya.othello2017.R;
 import com.hatenablog.satuya.othello2017.application.Othello2017;
 import com.hatenablog.satuya.othello2017.di.component.AppComponent;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.Disc;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardDelegate;
 import com.hatenablog.satuya.othello2017.presentation.delegate.init_board.InitBoardWithDividerDelegate;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
@@ -26,10 +26,10 @@ import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
 import javax.inject.Inject;
 
-import static com.hatenablog.satuya.othello2017.model.othello2.OthelloConstants.BOARD_SIZE;
-import static com.hatenablog.satuya.othello2017.model.othello.entity.Disc.BLACK;
-import static com.hatenablog.satuya.othello2017.model.othello.entity.Disc.EMPTY;
-import static com.hatenablog.satuya.othello2017.model.othello.entity.Disc.WHITE;
+import static com.hatenablog.satuya.othello2017.model.engine.OthelloConstants.BOARD_SIZE;
+import static com.hatenablog.satuya.othello2017.model.othello2.other.Color.BLACK;
+import static com.hatenablog.satuya.othello2017.model.othello2.other.Color.EMPTY;
+import static com.hatenablog.satuya.othello2017.model.othello2.other.Color.WHITE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -183,14 +183,14 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
     public void putDisc( Disc disc ) {
 
         animateButtonColor( disc );
-        Log.d( "putDisc", "x:" + disc.x + "\ny:" + disc.y );
+        Log.d( "putDisc", "x:" + disc.getX() + "\ny:" + disc.getY() );
     }
 
     @Override
     public void turnDisc( Disc turnDisc ) {
 
         animateButtonColor( turnDisc );
-        Log.d( "turnDisc", "x:" + turnDisc.x + "\ny:" + turnDisc.y );
+        Log.d( "turnDisc", "x:" + turnDisc.getX() + "\ny:" + turnDisc.getY() );
     }
 
     @Override
@@ -234,11 +234,11 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
 
         isAnimating = true;
 
-        final int i = putDisc.x - 1;
-        final int j = putDisc.y - 1;
+        final int i = putDisc.getX() - 1;
+        final int j = putDisc.getY() - 1;
         final Disc beforeDisc = (Disc) buttons[i][j].getTag();
 
-        if ( beforeDisc.color == BLACK || beforeDisc.color == WHITE ) {
+        if ( beforeDisc.getColor() == BLACK || beforeDisc.getColor() == WHITE ) {
             handler.post( new Runnable() {
                 @Override
                 public void run() {
@@ -252,7 +252,7 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
                         @Override
                         public void onAnimationEnd( Animation animation ) {
 
-                            if ( beforeDisc.color == BLACK ) {
+                            if ( beforeDisc.getColor() == BLACK ) {
                                 buttons[i][j].setImageResource( R.drawable.white_stone );
                                 buttons[i][j].setTag( putDisc ); //setTag
                             } else {
@@ -290,7 +290,7 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
                     Log.d( "discAnim", "scaleStart\nx:" + i + "y:" + j );
                 }
             } );
-        } else if ( beforeDisc.color == EMPTY ) {
+        } else if ( beforeDisc.getColor() == EMPTY ) {
             handler.post( new Runnable() {
                 @Override
                 public void run() {
@@ -313,12 +313,12 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
                         }
                     } );
 
-                    if ( putDisc.color == BLACK ) {
+                    if ( putDisc.getColor() == BLACK ) {
                         buttons[i][j].setVisibility( View.INVISIBLE );
                         buttons[i][j].setImageResource( R.drawable.black_stone );
 
                         buttons[i][j].setTag( putDisc );
-                    } else if ( putDisc.color == WHITE ) {
+                    } else if ( putDisc.getColor() == WHITE ) {
                         buttons[i][j].setVisibility( View.INVISIBLE );
                         buttons[i][j].setImageResource( R.drawable.white_stone );
 

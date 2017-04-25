@@ -67,8 +67,8 @@ public class BoardManagerImpl implements BoardManager {
     @Override
     synchronized public boolean put( Point point ) { //TODO 排他制御確認
 
-        boolean canPut = board.put( point );
-
+//        boolean canPut = board.put( point );
+        boolean canPut = board.put( null );
         if ( !canPut ) {
             onTryWrongPosPut( point );
             return false;
@@ -197,13 +197,14 @@ public class BoardManagerImpl implements BoardManager {
 
     private void onPut() {
 
-        PutEventImpl event = new PutEventImpl( convertColorCodeToColor( this.currentColorCode ),
-                this.board.getUpdateDiscs(), this.board.countDisc( BLACK ), this.board.countDisc( Disc.WHITE ) );
+//        PutEventImpl event = new PutEventImpl( convertColorCodeToColor( this.currentColorCode ),
+//                this.board.getUpdateDiscs(), this.board.countDisc( BLACK ), this.board.countDisc( Disc.WHITE ) );
 
         Iterator<BoardObserver> iterator = observers.iterator();
         while ( iterator.hasNext() ) {
             BoardObserver observer = iterator.next();
-            observer.onPut( event );
+//            observer.onPut( event );
+            observer.onPut( null );
         }
     }
 

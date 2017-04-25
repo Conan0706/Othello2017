@@ -4,13 +4,13 @@ import android.view.View;
 
 import com.hatenablog.satuya.othello2017.model.othello.BoardManager;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Color;
+import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
 import com.hatenablog.satuya.othello2017.model.othello.event.FinishEvent;
 import com.hatenablog.satuya.othello2017.model.othello.event.PassEvent;
 import com.hatenablog.satuya.othello2017.model.othello.event.PutEvent;
 import com.hatenablog.satuya.othello2017.model.othello.event.TryWrongPosPutEvent;
 import com.hatenablog.satuya.othello2017.model.othello.observer.BoardObserver;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
 import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 import com.hatenablog.satuya.othello2017.usecase.PosInputUseCase;
 
@@ -54,7 +54,7 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
     public void onPut( PutEvent event ) {
 
         Disc disc = event.getPutDisc();
-        view.putDisc( disc );
+//        view.putDisc( disc );
 
         ArrayList<Disc> turnDiscs = event.getTurnDiscs();
 
@@ -62,7 +62,7 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
 
         while ( iterator.hasNext() ) {
             Disc turnDisc = iterator.next();
-            view.turnDisc( turnDisc );
+//            view.turnDisc( turnDisc );
         }
     }
 

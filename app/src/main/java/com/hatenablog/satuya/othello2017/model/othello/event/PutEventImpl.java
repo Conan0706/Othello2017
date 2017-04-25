@@ -26,7 +26,7 @@ public class PutEventImpl implements PutEvent {
         this.playerColor = playerColor;
         this.updateDiscs = updateDiscs;
         this.putDisc = this.updateDiscs.get( 0 );
-//        this.turnDiscs = (ArrayList<Disc>) this.updateDiscs.clone(); //今日はここまで 3/15 4:03 3/15 15:31 終了
+//        this.turnDiscs = (ArrayList<DiscForCalc>) this.updateDiscs.clone(); //今日はここまで 3/15 4:03 3/15 15:31 終了
         //3/20 23:54 シャローコピーらしいので書き換え
 
         Iterator<Disc> iterator = this.updateDiscs.iterator();

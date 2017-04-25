@@ -1,24 +1,17 @@
 package com.hatenablog.satuya.othello2017.model.othello2.value_object;
 
-public class Point {
+/**
+ * Created by Shusei on 2017/04/21.
+ */
 
-    protected int x;
-    protected int y;
+public class Point implements Cloneable {
 
-    public Point() {
-        this( 0, 0 );
-    }
+    private int x, y;
 
     public Point( int x, int y ) {
+
         this.x = x;
         this.y = y;
-    }
-
-    @Override
-    public Point clone() {
-
-        Point point = new Point( this.x, this.y );
-        return point;
     }
 
     public int getX() {
@@ -29,5 +22,20 @@ public class Point {
     public int getY() {
 
         return this.y;
+    }
+
+    @Override
+    public Point clone() {
+
+        Point point = null;
+        try {
+            point = (Point) super.clone();
+            point.x = this.x;
+            point.y = this.y;
+        } catch ( CloneNotSupportedException e ) {
+            e.printStackTrace();
+        }
+
+        return point;
     }
 }

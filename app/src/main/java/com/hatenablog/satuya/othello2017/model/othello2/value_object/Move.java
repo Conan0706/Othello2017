@@ -1,35 +1,39 @@
 package com.hatenablog.satuya.othello2017.model.othello2.value_object;
 
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
+import com.hatenablog.satuya.othello2017.model.othello2.other.Color;
+import com.hatenablog.satuya.othello2017.model.othello2.other.PlayerType;
 
 /**
- * Created by Shusei on 2017/04/07.
+ * Created by Shusei on 2017/04/21.
  */
 
 public class Move extends Disc {
 
-    protected Player player = null;
+    private PlayerType playerType = null;
 
-    public Move( int x, int y, int color, Player player ) {
+    public Move( int x, int y, Color color, PlayerType playerType ) {
 
         super( x, y, color );
-
-        this.player = player;
+        this.playerType = playerType;
     }
 
-    public Move( Point point, int color, Player player ) {
+    public Move( Disc disc, PlayerType playerType ) {
 
-        this( point.x, point.y, color, player );
+        this( disc.getX(), disc.getY(), disc.getColor(), playerType );
     }
 
-    public Move( Disc disc, Player player ) {
+    public PlayerType getPlayerType() {
 
-        this( disc.x, disc.y, disc.color, player );
+        return this.playerType;
     }
 
-    public Player getPlayer() {
+    @Override
+    public Move clone() {
 
-        return this.player;
+        Move move = null;
+        move = (Move) super.clone();
+        move.playerType = this.playerType;
+
+        return move;
     }
 }
