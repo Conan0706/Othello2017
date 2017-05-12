@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 
@@ -27,9 +28,9 @@ import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 import javax.inject.Inject;
 
 import static com.hatenablog.satuya.othello2017.model.engine.OthelloConstants.BOARD_SIZE;
-import static com.hatenablog.satuya.othello2017.model.othello2.other.Color.BLACK;
-import static com.hatenablog.satuya.othello2017.model.othello2.other.Color.EMPTY;
-import static com.hatenablog.satuya.othello2017.model.othello2.other.Color.WHITE;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.Color.BLACK;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.Color.EMPTY;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.Color.WHITE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,14 +52,10 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
 
     protected OnFragmentInteractionListener mListener;
 
-//    public static final int BOARD_SIZE = 8;
-    public static final int BOARD_SIZE_DP = 300;
     public static final float BUTTON_SIZE_DP = 37.5f;
 
     protected ImageButton[][] buttons = new ImageButton[BOARD_SIZE][BOARD_SIZE];
     protected GridLayout layout = null; //TODO null
-
-//    protected boolean isAnimating[][] = new boolean[BOARD_SIZE][BOARD_SIZE];
 
     protected boolean isAnimating = false;
 
@@ -132,6 +129,14 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
         super.onViewCreated( view, bundle );
 
         this.view = view;
+
+        Button button = (Button) view.findViewById( R.id.undo_button );
+        button.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick( View v ) {
+                presenter.onUndoButtonClick();
+            }
+        } );
 
 //        this.delegate = new InitBoardDelegateImpl( this );
         this.delegate = new InitBoardWithDividerDelegate( this );
@@ -212,7 +217,7 @@ public class GameFragment extends Fragment implements GameView, View.OnClickList
     public void onClick( View v ) {
 
         if ( !isAnimating )
-        presenter.onClick( v );
+        presenter.onPut( v );
     }
 
     /**

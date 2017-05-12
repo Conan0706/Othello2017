@@ -10,8 +10,7 @@ import com.hatenablog.satuya.othello2017.presentation.view.GameView;
 
 public interface GamePresenter {
 
-    void onClick( View view );
+    void onUndoButtonClick();
+    void onPut( View view );
     void setGameView( GameView view );
-
-    void onUIPutFinished();
 }

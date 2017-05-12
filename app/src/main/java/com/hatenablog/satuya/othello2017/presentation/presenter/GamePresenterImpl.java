@@ -30,7 +30,7 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
     private PosInputUseCase useCase = null; //TODO null
     private BoardManager manager = null; //TODO null
 
-    @Inject
+
     public GamePresenterImpl( PosInputUseCase useCase, BoardManager manager ) {
 
         this.useCase = useCase;
@@ -42,12 +42,6 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
     public void setGameView( GameView view ) {
 
         this.view = view;
-    }
-
-    @Override
-    public void onUIPutFinished() {
-
-        this.useCase.onUIPutFinished();
     }
 
     @Override
@@ -104,7 +98,12 @@ public class GamePresenterImpl implements GamePresenter, BoardObserver {
     }
 
     @Override
-    public void onClick( View view ) {
+    public void onUndoButtonClick() {
+
+    }
+
+    @Override
+    public void onPut( View view ) {
 
         Point point = (Point) view.getTag();
         useCase.onClick( point );

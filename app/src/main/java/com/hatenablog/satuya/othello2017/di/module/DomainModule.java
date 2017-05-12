@@ -91,8 +91,12 @@ public class DomainModule {
 
         PlayerGroup group = null;
 
-        PlayerType blackType = othello2017.getBlackPlayerType();
-        PlayerType whiteType = othello2017.getWhitePlayerType();
+//        PlayerType blackType = othello2017.getBlackPlayerType();
+//        PlayerType whiteType = othello2017.getWhitePlayerType();
+
+        PlayerType blackType = null;
+        PlayerType whiteType = null;
+
 
         UIPlayer uiPlayer1 = new UIPlayer( Color.BLACK );
         UIPlayer uiPlayer2 = new UIPlayer( Color.WHITE );

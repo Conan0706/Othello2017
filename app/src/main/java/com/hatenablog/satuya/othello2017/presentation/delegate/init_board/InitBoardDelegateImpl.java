@@ -65,7 +65,7 @@ public class InitBoardDelegateImpl implements InitBoardDelegate {
                         button.setOnClickListener( new View.OnClickListener() {
                             @Override
                             public void onClick( View v ) {
-                                presenter.onClick( v );
+                                presenter.onPut( v );
                             }
                         } );
 

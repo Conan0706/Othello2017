@@ -1,8 +1,7 @@
-package com.hatenablog.satuya.othello2017.model.othello2.mode_state;
+package com.hatenablog.satuya.othello2017.model.othello2.manager;
 
 import com.hatenablog.satuya.othello2017.model.engine.Board;
-import com.hatenablog.satuya.othello2017.model.othello2.BoardManager;
-import com.hatenablog.satuya.othello2017.model.othello2.other.GameMode;
+import com.hatenablog.satuya.othello2017.model.othello2.type.GameMode;
 import com.hatenablog.satuya.othello2017.model.othello2.value_object.Move;
 
 /**

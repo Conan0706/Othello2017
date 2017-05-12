@@ -1,15 +1,11 @@
-package com.hatenablog.satuya.othello2017.model.othello2.mode_state;
+package com.hatenablog.satuya.othello2017.model.othello2.manager;
 
 import com.hatenablog.satuya.othello2017.model.engine.Board;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Point;
-import com.hatenablog.satuya.othello2017.model.othello2.BoardManager;
-import com.hatenablog.satuya.othello2017.model.othello2.BoardNotifier;
 import com.hatenablog.satuya.othello2017.model.othello2.OthelloUtilities;
-import com.hatenablog.satuya.othello2017.model.othello2.other.GameMode;
+import com.hatenablog.satuya.othello2017.model.othello2.type.GameMode;
 import com.hatenablog.satuya.othello2017.model.othello2.value_object.Move;
 
-import static com.hatenablog.satuya.othello2017.model.othello2.other.GameMode.COMPUTER_MODE;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.GameMode.COMPUTER_MODE;
 
 /**
  * Created by Shusei on 2017/04/04.

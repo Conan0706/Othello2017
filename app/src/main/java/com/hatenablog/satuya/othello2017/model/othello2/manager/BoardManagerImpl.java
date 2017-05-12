@@ -1,28 +1,36 @@
-package com.hatenablog.satuya.othello2017.model.othello2;
+package com.hatenablog.satuya.othello2017.model.othello2.manager;
 
 import com.hatenablog.satuya.othello2017.model.engine.Board;
 import com.hatenablog.satuya.othello2017.model.engine.point.DiscForCalc;
+import com.hatenablog.satuya.othello2017.model.othello2.BoardListener;
+import com.hatenablog.satuya.othello2017.model.othello2.BoardValueGroup;
+import com.hatenablog.satuya.othello2017.model.othello2.OthelloUtilities;
 import com.hatenablog.satuya.othello2017.model.othello2.event.FinishEventImpl;
 import com.hatenablog.satuya.othello2017.model.othello2.event.PassEventImpl;
 import com.hatenablog.satuya.othello2017.model.othello2.event.PutEventImpl;
 import com.hatenablog.satuya.othello2017.model.othello2.event.UndoEventImpl;
-import com.hatenablog.satuya.othello2017.model.othello2.mode_state.ComputerModeState;
-import com.hatenablog.satuya.othello2017.model.othello2.mode_state.GameModeState;
-import com.hatenablog.satuya.othello2017.model.othello2.mode_state.HumanModeState;
-import com.hatenablog.satuya.othello2017.model.othello2.other.Color;
-import com.hatenablog.satuya.othello2017.model.othello2.other.EventType;
-import com.hatenablog.satuya.othello2017.model.othello2.other.GameMode;
-import com.hatenablog.satuya.othello2017.model.othello2.other.PlayerType;
+import com.hatenablog.satuya.othello2017.model.othello2.type.Color;
+import com.hatenablog.satuya.othello2017.model.othello2.type.EventType;
+import com.hatenablog.satuya.othello2017.model.othello2.type.GameMode;
+import com.hatenablog.satuya.othello2017.model.othello2.type.PlayerType;
 import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
-import com.hatenablog.satuya.othello2017.model.othello2.player.PlayerData;
-import com.hatenablog.satuya.othello2017.model.othello2.player.PlayerDataImpl;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.PlayerData;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.PlayerDataImpl;
 import com.hatenablog.satuya.othello2017.model.othello2.value_object.Move;
 import com.hatenablog.satuya.othello2017.model.othello2.value_object.Point;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import static com.hatenablog.satuya.othello2017.model.engine.OthelloConstants.BLACK;
 import static com.hatenablog.satuya.othello2017.model.engine.OthelloConstants.WHITE;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.EventType.FINISH;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.EventType.PASS;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.EventType.PUT;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.EventType.UNDO;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.EventType.WRONG_PUT;
 
 /**
  * Created by Shusei on 2017/04/05.
@@ -35,16 +43,18 @@ public class BoardManagerImpl implements BoardManager {
     private BoardNotifier notifier = null;
 
     private Board board = null;
-    private GameModeState modeState = null;
+//    private GameModeState modeState = null;
 
-    private PlayerType currentPlayerType = null;
-    private PlayerData currentPlayerData = null;
-    private Move currentMove = null;
+    private PlayerData lastPlayerData = null; //最後に打ったプレイヤーの情報
+    private Move lastMove = null; //最後に打たれた手
 
     private Player blackPlayer = null;
     private Player whitePlayer = null;
 
-    public BoardManagerImpl( Board board, GameMode mode, Player blackPlayer, Player whitePlayer ) {
+    @Inject
+    public BoardManagerImpl( Board board, GameMode mode,
+                             @Named( "blackPlayer" ) Player blackPlayer,
+                             @Named( "whitePlayer" ) Player whitePlayer ) {
 
         this.board = board;
         init( mode, blackPlayer, whitePlayer );
@@ -60,24 +70,24 @@ public class BoardManagerImpl implements BoardManager {
         this.blackPlayer = blackPlayer;
         this.whitePlayer = whitePlayer;
 
-        switch ( mode ) {
-            case HUMAN_MODE:
-                this.modeState = HumanModeState.getInstance();
-                break;
-            case COMPUTER_MODE:
-                this.modeState = ComputerModeState.getInstance();
-                break;
-        }
+//        switch ( mode ) {
+//            case HUMAN_MODE:
+//                this.modeState = HumanModeState.getInstance();
+//                break;
+//            case COMPUTER_MODE:
+//                this.modeState = ComputerModeState.getInstance();
+//                break;
+//        }
     }
 
     @Override
-    public void addObserver( BoardListener listener ) {
+    public void addListener( BoardListener listener ) {
 
         this.notifier.addListener( listener );
     }
 
     @Override
-    public void deleteObserver( BoardListener listener ) {
+    public void deleteListener( BoardListener listener ) {
 
         this.notifier.deleteListener( listener );
     }
@@ -85,22 +95,47 @@ public class BoardManagerImpl implements BoardManager {
     @Override
     public boolean put( Move move ) {
 
-        boolean canPut = this.modeState.put( this, this.board, move );
+        boolean canPut = board.put( OthelloUtilities.Disc2ForCalcDisc( move ) );
 
         if ( canPut ) {
+            this.lastMove = move;
             if ( move.getColor() == Color.BLACK ) {
-                new Thread( new Runnable() {
-                    @Override
-                    public void run() {
-                        whitePlayer.onTurn();
-                    }
-                } ).start();
+                this.lastPlayerData = blackPlayer.getPlayerData();
+            } else if ( move.getColor() == Color.WHITE ) {
+                this.lastPlayerData = whitePlayer.getPlayerData();
             }
-            if ( move.getColor() == Color.WHITE ) {
+        }
+
+        if ( !canPut ) {
+            igniteEvent( WRONG_PUT );
+            return false;
+        } else {
+            igniteEvent( PUT );
+        }
+
+        if ( canPut ) {
+
+            if ( board.isGameOver() ) {
+                igniteEvent( FINISH );
+                return true;
+            }
+
+            if ( board.pass() ) {
+                igniteEvent( PASS );
+            }
+
+            if ( this.board.getCurrentColor() == BLACK ) {
                 new Thread( new Runnable() {
                     @Override
                     public void run() {
                         blackPlayer.onTurn();
+                    }
+                } ).start();
+            } else if ( this.board.getCurrentColor() == WHITE ) {
+                new Thread( new Runnable() {
+                    @Override
+                    public void run() {
+                        whitePlayer.onTurn();
                     }
                 } ).start();
             }
@@ -112,9 +147,12 @@ public class BoardManagerImpl implements BoardManager {
     @Override
     public boolean undo( PlayerData playerData ) {
 
-        boolean canPut = this.modeState.undo( this, this.board );
-
-        return canPut;
+//        boolean canPut = this.modeState.undo( this, this.board );
+        boolean canUndo = this.board.undo();
+        if ( canUndo ) {
+            igniteEvent( UNDO );
+        }
+        return canUndo;
     }
 
     @Override
@@ -137,11 +175,11 @@ public class BoardManagerImpl implements BoardManager {
         switch ( type ) {
             case PUT:
                 notifier.igniteEvent(
-                        new PutEventImpl( makeBVG(), currentMove, this.board.getColorStorage(), this.board.getUpdateDiscs() ) );
+                        new PutEventImpl( makeBVG(), lastMove, this.board.getColorStorage(), this.board.getUpdateDiscs() ) );
                 break;
             case PASS:
                 notifier.igniteEvent(
-                        new PassEventImpl( makeBVG(), this.currentPlayerData ) );
+                        new PassEventImpl( makeBVG(), this.lastPlayerData ) );
                 break;
             case FINISH:
                 notifier.igniteEvent(
@@ -150,7 +188,7 @@ public class BoardManagerImpl implements BoardManager {
                 break;
             case UNDO:
                 notifier.igniteEvent(
-                        new UndoEventImpl( makeBVG(), this.currentPlayerData ) );
+                        new UndoEventImpl( makeBVG(), this.lastPlayerData ) );
                 break;
         }
     }
@@ -160,7 +198,7 @@ public class BoardManagerImpl implements BoardManager {
         return new BoardValueGroup() {
             @Override
             public PlayerType getCurrentPlayerType() {
-                return BoardManagerImpl.this.currentPlayerType;
+                return BoardManagerImpl.this.lastPlayerData.getPlayerType();
             }
 
             @Override

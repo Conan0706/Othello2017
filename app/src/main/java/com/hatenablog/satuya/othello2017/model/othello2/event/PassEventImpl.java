@@ -1,11 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.othello2.event;
 
-import com.hatenablog.satuya.othello2017.model.engine.Board;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Color;
 import com.hatenablog.satuya.othello2017.model.othello2.BoardValueGroup;
-import com.hatenablog.satuya.othello2017.model.othello2.other.PlayerType;
-import com.hatenablog.satuya.othello2017.model.othello2.player.Player;
-import com.hatenablog.satuya.othello2017.model.othello2.player.PlayerData;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.PlayerData;
 
 /**
  * Created by Shusei on 2017/03/15.

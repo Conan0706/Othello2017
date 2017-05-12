@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.hatenablog.satuya.othello2017.R;
-import com.hatenablog.satuya.othello2017.model.othello.entity.Disc;
+import com.hatenablog.satuya.othello2017.model.othello2.value_object.Disc;
 import com.hatenablog.satuya.othello2017.presentation.fragment.GameFragment;
 import com.hatenablog.satuya.othello2017.presentation.presenter.GamePresenter;
 
 import static com.hatenablog.satuya.othello2017.model.engine.OthelloConstants.BOARD_SIZE;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.Color.BLACK;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.Color.EMPTY;
+import static com.hatenablog.satuya.othello2017.model.othello2.type.Color.WHITE;
 
 /**
  * Created by Shusei on 2017/04/03.
@@ -80,16 +83,16 @@ public class InitBoardWithDividerDelegate implements InitBoardDelegate {
 
                 button.setVisibility( View.VISIBLE );
 
-                button.setTag( new Disc( i + 1, j + 1, Disc.EMPTY ) );
+                button.setTag( new Disc( i + 1, j + 1, EMPTY ) );
 
                 if ( ( i == 3 && j == 3 ) || ( i == 4 && j == 4 ) ) {
                     button.setImageResource( R.drawable.white_stone );
-                    button.setTag( new Disc( i + 1, j + 1, Disc.WHITE ) );
+                    button.setTag( new Disc( i + 1, j + 1, WHITE ) );
                 }
 
                 if ( ( i == 3 && j == 4 ) || ( i == 4 && j == 3 ) ) {
                     button.setImageResource( R.drawable.black_stone );
-                    button.setTag( new Disc( i + 1, j + 1, Disc.BLACK ) );
+                    button.setTag( new Disc( i + 1, j + 1, BLACK ) );
                 }
 
                 button.setOnClickListener( fragment );

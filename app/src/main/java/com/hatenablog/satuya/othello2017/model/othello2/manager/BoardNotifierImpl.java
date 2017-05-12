@@ -1,5 +1,6 @@
-package com.hatenablog.satuya.othello2017.model.othello2;
+package com.hatenablog.satuya.othello2017.model.othello2.manager;
 
+import com.hatenablog.satuya.othello2017.model.othello2.BoardListener;
 import com.hatenablog.satuya.othello2017.model.othello2.event.Event;
 import com.hatenablog.satuya.othello2017.model.othello2.event.FinishEvent;
 import com.hatenablog.satuya.othello2017.model.othello2.event.PassEvent;

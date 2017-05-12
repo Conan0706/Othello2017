@@ -1,7 +1,10 @@
 package com.hatenablog.satuya.othello2017.model.othello2.value_object;
 
-import com.hatenablog.satuya.othello2017.model.othello2.other.Color;
-import com.hatenablog.satuya.othello2017.model.othello2.other.PlayerType;
+import com.hatenablog.satuya.othello2017.model.othello2.type.Color;
+import com.hatenablog.satuya.othello2017.model.othello2.type.PlayerType;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  * Created by Shusei on 2017/04/21.
@@ -35,5 +38,17 @@ public class Move extends Disc {
         move.playerType = this.playerType;
 
         return move;
+    }
+
+    @Override
+    public boolean equals( Object o ) {
+
+        return EqualsBuilder.reflectionEquals( this, o );
+    }
+
+    @Override
+    public int hashCode() {
+
+        return HashCodeBuilder.reflectionHashCode( this );
     }
 }

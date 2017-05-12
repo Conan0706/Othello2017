@@ -19,7 +19,7 @@
         android:text="Othello" android:textSize="36sp" android:layout_above="@+id/base_board"
         android:layout_centerHorizontal="true" android:layout_marginBottom="42dp"/>
     <Button
-        android:id="@+id/button"
+        android:id="@+id/undo_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/base_board" android:layout_below="@+id/base_board"
@@ -29,8 +29,8 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button" android:layout_alignEnd="@+id/base_board"/>
+        android:text="Button" android:layout_alignBaseline="@+id/undo_button"
+        android:layout_alignBottom="@+id/undo_button" android:layout_alignEnd="@+id/base_board"/>
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"

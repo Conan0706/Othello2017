@@ -1,6 +1,7 @@
 package com.hatenablog.satuya.othello2017.model.othello2.player;
 
-import com.hatenablog.satuya.othello2017.model.othello2.BoardManager;
+import com.hatenablog.satuya.othello2017.model.othello2.PutNotifier;
+import com.hatenablog.satuya.othello2017.model.othello2.manager.BoardManager;
 import com.hatenablog.satuya.othello2017.model.othello2.value_object.Point;
 
 /**
@@ -9,6 +10,7 @@ import com.hatenablog.satuya.othello2017.model.othello2.value_object.Point;
 
 public interface UIPlayer extends Player {
 
+    void setPutNotifier( PutNotifier putNotifier );
     void put( BoardManager manager, Point point );
     boolean canPut( BoardManager manager, Point point );
 }
